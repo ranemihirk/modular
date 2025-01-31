@@ -4,9 +4,11 @@ import dotenv from "dotenv";
 // Load environment variables from .env.local (or .env)
 dotenv.config();
 
+const isProd = process.env.NODE_ENV === 'production';
+
 const nextConfig: NextConfig = {
   output: 'export',
-  basePath: '/modular',
+  basePath: isProd ? '/modular': '',
   reactStrictMode: true,
   typescript: {
     // !! WARN !!
